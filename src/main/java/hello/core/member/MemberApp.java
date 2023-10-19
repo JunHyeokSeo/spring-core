@@ -1,8 +1,20 @@
 package hello.core.member;
 
+import hello.core.AppConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class MemberApp {
 	public static void main(String[] args) {
-		MemberService memberService = new MemberServiceImpl();
+//		AppConfig appConfig = new AppConfig();
+//		MemberService memberService = appConfig.memberService();
+
+		//Spring Container 역할
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+		//Method 이름으로 name이 등록된다.
+		//getBean(name, Type);
+		MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+
 		Member member = new Member(1L, "memberA", Grade.VIP);
 		memberService.join(member);
 

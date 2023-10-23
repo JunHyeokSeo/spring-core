@@ -30,21 +30,24 @@ public class AppConfig {
 	//@Bean : Spring Container에 자동 등록
 	@Bean
 	public MemberService memberService() {
-		return new MemberServiceImpl(getMemberRepository());
+		System.out.println("Call AppConfig.memberService");
+		return new MemberServiceImpl(memberRepository());
 	}
 	
 	@Bean
 	public OrderServiceImpl orderService() {
-		return new OrderServiceImpl(getMemberRepository(), getDiscountPolicy());
+		System.out.println("Call AppConfig.orderService");
+		return new OrderServiceImpl(memberRepository(), discountPolicy());
 	}
 
 	@Bean
-	public MemberRepository getMemberRepository() {
+	public MemberRepository memberRepository() {
+		System.out.println("Call AppConfig.memberRepository");
 		return new MemoryMemberRepository();
 	}
 
 	@Bean
-	public DiscountPolicy getDiscountPolicy() {
+	public DiscountPolicy discountPolicy() {
 //		return new FixDiscountPolicy();
 		return new RateDiscountPolicy();
 	}

@@ -32,7 +32,7 @@ public class AppConfig {
 	public MemberService memberService() {
 		return new MemberServiceImpl(getMemberRepository());
 	}
-
+	
 	@Bean
 	public OrderServiceImpl orderService() {
 		return new OrderServiceImpl(getMemberRepository(), getDiscountPolicy());

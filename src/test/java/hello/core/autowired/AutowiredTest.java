@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.Nullable;
 
 import java.util.Optional;
@@ -16,6 +17,7 @@ public class AutowiredTest {
 
 	}
 
+	//Spring Container 생성하는 과정에서 Autowired 옵션에 대한 동작을 확인하기 위한 클래스
 	static class TestBean {
 		//의존관계가 없을 때, 메소드 호출 X
 		@Autowired(required = false)
